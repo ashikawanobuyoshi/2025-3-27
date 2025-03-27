@@ -21,7 +21,7 @@ jobs:
       - name: "Get branch name and sha"
         id: get_branch
         run: |
-          PR=$(curl -H "X-Kuroco-Auth: token 679c1272a783640e84b9d2b53694b09b" https://studiomalias-2025-3-27.g.kuroco.app/direct/menu/github/?pr=${{ github.event.issue.pull_request.url }})
+          PR=$(curl -H "X-Kuroco-Auth: token 679c1272a783640e84b9d2b53694b09b" https://studiomalias-2025-3-37.g.kuroco.app/direct/menu/github/?pr=${{ github.event.issue.pull_request.url }})
           echo "branch=$(echo $PR | jq -r '.ref')" >> $GITHUB_OUTPUT
           echo "sha=$(echo $PR | jq -r '.sha')" >> $GITHUB_OUTPUT
       - name: Checkout Repo
@@ -59,7 +59,7 @@ jobs:
       - name: Webhook
         uses: diverta/workflow-webhook@v3
         env:
-          webhook_url: "https://studiomalias-2025-3-27.g.kuroco.app/direct/menu/github/"
+          webhook_url: "https://studiomalias-2025-3-37.g.kuroco.app/direct/menu/github/"
           webhook_secret: "679c1272a783640e84b9d2b53694b09b"
           data: '{"single_zip":"1","domain":"studiomalias-2025-3-37.g.kuroco-front.app","pr":"${{ github.event.issue.pull_request.url }}",  "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ steps.get_branch.outputs.sha }}"}'
           
@@ -100,6 +100,6 @@ jobs:
       - name: Webhook
         uses: diverta/workflow-webhook@v3
         env:
-          webhook_url: "https://studiomalias-2025-3-27.g.kuroco.app/direct/menu/github/"
+          webhook_url: "https://studiomalias-2025-3-37.g.kuroco.app/direct/menu/github/"
           webhook_secret: "679c1272a783640e84b9d2b53694b09b"
-          data: '{"single_zip":"1","domain":"studiomalias-2025-3-27.g.kuroco-front.app", "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ github.sha }}"}'
+          data: '{"single_zip":"1","domain":"studiomalias-2025-3-37.g.kuroco-front.app", "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ github.sha }}"}'
